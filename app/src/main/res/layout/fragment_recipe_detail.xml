@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5F7"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/detailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Recipe Image -->
+        <ImageView
+            android:id="@+id/iv_recipe_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Recipe Title -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delicious Chicken Curry"
+            android:textColor="#2E3E5C"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#9FA5C0"
+            android:textSize="16sp"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:text="This is a detailed recipe description that may be very long and needs to be trimmed. It explains everything from ingredients to the cooking steps. You can expand or collapse this section to read more or less."
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tv_toggle_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show more"
+            android:textColor="#1FCC79"
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btn_play_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Video"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1FCC79"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/tv_ingredients_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingredients"
+            android:textColor="#2E3E5C"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/tv_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#9FA5C0"
+            android:textSize="16sp"
+            android:text="• 1kg Chicken\n• 2 tbsp Curry Powder\n• 1 Onion\n• 2 Garlic cloves\n• 1 cup Coconut Milk"
+            android:layout_marginBottom="16dp" />
+    </LinearLayout>
+</ScrollView>
