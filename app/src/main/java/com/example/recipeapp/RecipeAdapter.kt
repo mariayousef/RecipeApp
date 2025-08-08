@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(
+    private val onItemClick: (Meal) -> Unit
+) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     private val recipes = mutableListOf<Meal>()
 
@@ -27,6 +29,10 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
             Glide.with(itemView.context)
                 .load(meal.strMealThumb)
                 .into(recipeImage)
+
+            itemView.setOnClickListener {
+                onItemClick(meal)
+            }
         }
     }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +43,10 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerView = view.findViewById(R.id.meal_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recipeAdapter = RecipeAdapter()
+        recipeAdapter = RecipeAdapter { selectedMeal ->
+            val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment(selectedMeal)
+            findNavController().navigate(action)
+        }
         recyclerView.adapter = recipeAdapter
         fetchMeals()
         return view
