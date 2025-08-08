@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delicious Chicken Curry"
-            android:textColor="#2E3E5C"
+            android:textColor="@color/main_text"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -35,7 +35,7 @@
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#9FA5C0"
+            android:textColor="@color/secondary_text"
             android:textSize="16sp"
             android:maxLines="4"
             android:ellipsize="end"
@@ -56,10 +56,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Play Video"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/form_bg"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="#E27070"
+            android:backgroundTint="@color/pink"
             app:icon="@drawable/baseline_youtube_searched_for_24"
             app:iconGravity="textStart"
             app:iconPadding="8dp" />
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingredients"
-            android:textColor="#2E3E5C"
+            android:textColor="@color/main_text"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -78,7 +78,7 @@
             android:id="@+id/tv_ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#9FA5C0"
+            android:textColor="@color/secondary_text"
             android:textSize="16sp"
             android:text="• 1kg Chicken\n• 2 tbsp Curry Powder\n• 1 Onion\n• 2 Garlic cloves\n• 1 cup Coconut Milk"
             android:layout_marginBottom="16dp" />
