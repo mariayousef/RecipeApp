@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +23,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recipeAdapter: RecipeAdapter
+    private lateinit var progressBar: ProgressBar
 
     interface ApiService {
         @GET("search.php?f=a")
@@ -41,6 +43,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        progressBar = view.findViewById(R.id.progress_bar)
         recyclerView = view.findViewById(R.id.meal_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recipeAdapter = RecipeAdapter { selectedMeal ->
@@ -53,15 +56,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchMeals() {
+        progressBar.visibility = View.VISIBLE
         lifecycleScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) { api.getMeals() }
+                progressBar.visibility = View.GONE
                 if (response.isSuccessful && response.body() != null) {
                     recipeAdapter.submitList(response.body()!!.meals)
                 } else {
                     Toast.makeText(requireContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
+                progressBar.visibility = View.GONE
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
