@@ -31,10 +31,22 @@ class RecipeDetailFragment : Fragment() {
         val instructionsView = view.findViewById<TextView>(R.id.detail_instructions)
         val youtubeButton = view.findViewById<Button>(R.id.youtube_button)
         val toggleView = view.findViewById<TextView>(R.id.toggle_description)
+        val favoriteIcon = view.findViewById<ImageView>(R.id.favorite_icon)
 
         Glide.with(requireContext()).load(meal.strMealThumb).into(imageView)
         titleView.text = meal.strMeal
         instructionsView.text = meal.strInstructions ?: "No instructions available"
+
+        var isFavorite = false
+
+        favoriteIcon.setOnClickListener {
+            isFavorite = !isFavorite
+            if (isFavorite) {
+                favoriteIcon.setImageResource(R.drawable.ic_favorite_filled)
+            } else {
+                favoriteIcon.setImageResource(R.drawable.ic_favorite_border)
+            }
+        }
 
         var isExpanded = false
 
