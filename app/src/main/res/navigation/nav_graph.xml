@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.recipeapp.HomeFragment"
-        android:label="Home">
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
+
+
     </fragment>
 
     <fragment
         android:id="@+id/recipeDetailFragment"
         android:name="com.example.recipeapp.RecipeDetailFragment"
-        android:label="Recipe Detail">
+        android:label="Recipe Detail"
+        >
         <argument
             android:name="meal"
             app:argType="com.example.recipeapp.Meal" />
     </fragment>
+
+    <fragment android:id="@+id/search"
+        android:name="com.example.recipeapp.SearchFragment"
+        android:label="search"
+        tools:layout="@layout/fragment_search">
+
+    </fragment>
+    <fragment android:id="@+id/favorite"
+        android:name="com.example.recipeapp.FavouriteFragment"
+        android:label="favorite"
+        tools:layout="@layout/fragment_favourite">
+
+    </fragment>
+
+
+
 </navigation>

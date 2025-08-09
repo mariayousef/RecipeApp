@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     id("kotlin-parcelize")
     alias(libs.plugins.safe.args)
+
 }
 
 android {
@@ -33,10 +34,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+
     }
 
     kotlinOptions {
         jvmTarget = "11"
+
     }
 }
 
@@ -82,4 +85,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }
