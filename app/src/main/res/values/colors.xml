@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="primary">#1FCC79</color>
+    <color name="main_text">#2E3E5C</color>
+    <color name="pink">#FF6464</color>
+    <color name="transparent_pink">#FFC2E0</color>
+    <color name="secondary_text">#9FA5C0</color>
+    <color name="outline">#D0DBEA</color>
+    <color name="text_field">#D7D6D7</color>
+    <color name="form_bg">#F4F5F7</color>
+    <color name="white">#FFFFFF</color>
+    </resources>
