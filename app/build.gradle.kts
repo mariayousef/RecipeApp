@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.example.recipeapp"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.recipeapp"
@@ -41,6 +41,9 @@ android {
         jvmTarget = "11"
 
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -63,6 +66,7 @@ dependencies {
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.androidx.annotation)
     kapt(libs.room.compiler)
 
     // Glide
