@@ -24,6 +24,8 @@ class RecipeAdapter(
         private val recipeTitle: TextView = itemView.findViewById(R.id.recipeTitle)
         private val recipeImage: ImageView = itemView.findViewById(R.id.recipeImage)
 
+
+
         fun bind(meal: Meal) {
             recipeTitle.text = meal.strMeal
             Glide.with(itemView.context)

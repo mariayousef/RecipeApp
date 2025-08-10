@@ -31,7 +31,9 @@
         android:name="com.example.recipeapp.SearchFragment"
         android:label="search"
         tools:layout="@layout/fragment_search">
-
+        <action
+            android:id="@+id/action_SearchFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
     </fragment>
     <fragment android:id="@+id/favorite"
         android:name="com.example.recipeapp.FavouriteFragment"
