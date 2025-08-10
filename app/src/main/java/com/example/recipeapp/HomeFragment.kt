@@ -78,13 +78,13 @@ class HomeFragment : Fragment() {
                 }
                 R.id.favorite -> {
                     val bundle = Bundle()
-                    bundle.putSerializable("recipe_list", ArrayList(originalRecipeList))
+
                     findNavController().navigate(R.id.favorite, bundle)
                     true
                 }
                 R.id.homeFragment-> {
                     val bundle = Bundle()
-                    bundle.putSerializable("recipe_list", ArrayList(originalRecipeList))
+
                     findNavController().navigate(R.id.homeFragment, bundle)
                     true
                 }
