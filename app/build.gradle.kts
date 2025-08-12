@@ -89,5 +89,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    //youtube
+    implementation ("com.google.android.exoplayer:exoplayer:2.18.1")
+    implementation ("com.google.android.exoplayer:exoplayer-ui:2.18.1")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 
 }
