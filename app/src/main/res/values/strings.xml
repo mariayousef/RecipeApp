@@ -28,6 +28,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="about_the_creator">About the Creator</string>
+    <string name="about_the_application">About the Application</string>
+    <string name="app_details">The Recipe App allows users to browse various recipes, save their favorites, and perhaps even create their own. Enjoy exploring a world of culinary delights!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="meal_name">Meal name</string>
+    <string name="category">Category</string>
+    <string name="delete">delete</string>
+    <string name="favorites">Favorites</string>
+    <string name="meal_image">Meal image</string>
 
 
 </resources>

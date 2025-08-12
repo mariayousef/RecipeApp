@@ -30,7 +30,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize views with findViewById
+        // Initialize views
         favoriteRecyclerView = view.findViewById(R.id.favoriteRecyclerView)
         progressBar = view.findViewById(R.id.progressBar)
 

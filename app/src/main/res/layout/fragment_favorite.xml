@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/primary">
+        android:background="@color/pink">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/favorite_meal"
+            app:title="Favorite meals❤️"
             app:titleTextColor="@color/main_text"
             android:textStyle="bold"
             app:titleCentered="true"/>

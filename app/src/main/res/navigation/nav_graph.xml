@@ -36,12 +36,17 @@
             app:destination="@id/recipeDetailFragment" />
     </fragment>
     <fragment android:id="@+id/favorite"
-        android:name="com.example.recipeapp.FavouriteFragment"
+        android:name="com.example.recipeapp.FavoriteFragment"
         android:label="favorite"
-        tools:layout="@layout/fragment_favourite">
+        tools:layout="@layout/fragment_favorite">
 
     </fragment>
 
-
+    <fragment android:id="@+id/about"
+        android:name="com.example.recipeapp.AboutFragment"
+        android:label="about"
+        tools:layout="@layout/fragment_about"
+        id="@+id/aboutFragment">
+    </fragment>
 
 </navigation>
