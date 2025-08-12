@@ -4,11 +4,12 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     id("kotlin-parcelize")
     alias(libs.plugins.safe.args)
+
 }
 
 android {
     namespace = "com.example.recipeapp"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.recipeapp"
@@ -33,10 +34,15 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+
     }
 
     kotlinOptions {
         jvmTarget = "11"
+
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -60,6 +66,7 @@ dependencies {
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.androidx.annotation)
     kapt(libs.room.compiler)
 
     // Glide
@@ -82,4 +89,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }
