@@ -50,7 +50,13 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        if (!NetworkUtils.isInternetAvailable(requireContext())) {
+            NetworkUtils.showNoInternetToast(requireContext())
+            requireActivity().onBackPressed()
+            return view
+        }
         progressBar = view.findViewById(R.id.progress_bar)
         recyclerView = view.findViewById(R.id.meal_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
