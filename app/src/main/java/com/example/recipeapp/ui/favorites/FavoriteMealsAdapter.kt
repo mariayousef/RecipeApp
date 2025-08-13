@@ -1,14 +1,17 @@
-package com.example.recipeapp
+package com.example.recipeapp.ui.favorites
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.recipeapp.Meal
+import com.example.recipeapp.R
 
 class FavoriteMealsAdapter(
     private val onItemClick: ((Meal) -> Unit)? = null,
@@ -28,13 +31,12 @@ class FavoriteMealsAdapter(
     inner class FavoriteMealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val mealNameText: TextView = itemView.findViewById(R.id.mealNameText)
         private val strMealThumb: ImageView = itemView.findViewById(R.id.mealImage)
-        private val removeButton: Button = itemView.findViewById(R.id.removeButton)
 
+        val removeButton: ImageButton = itemView.findViewById(R.id.removeButton)
         fun bind(meal: Meal) {
             mealNameText.text = meal.strMeal
 
-            // Example if using Glide or Coil:
-            // Glide.with(mealImage.context).load(meal.strMealThumb).into(mealImage)
+             Glide.with(strMealThumb.context).load(meal.strMealThumb).into(strMealThumb)
 
             itemView.setOnClickListener {
                 onItemClick?.invoke(meal)

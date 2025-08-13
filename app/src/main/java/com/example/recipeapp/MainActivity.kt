@@ -5,13 +5,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -43,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_about_creator -> {
                 findNavController(R.id.nav_host_fragment)
-                    .navigate(R.id.aboutFragment)
+                    .navigate(R.id.about_fragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
