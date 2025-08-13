@@ -59,16 +59,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
                 editor.putBoolean("is_logged_in", false)
-                // Add any other auth-related data to clear, e.g.:
-                // editor.remove("user_token")
-                // editor.remove("user_id")
                 editor.apply()
 
-                // Close the activity (and app session)
-                finish()
 
-                // It's good practice to close the drawer if it's open,
-                // though finish() might make this visually brief.
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START)
                 }
