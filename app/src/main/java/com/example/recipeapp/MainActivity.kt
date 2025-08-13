@@ -1,5 +1,7 @@
 package com.example.recipeapp
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -38,29 +40,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment, R.id.search, R.id.favoriteFragment // Add other top-level destinations from your bottom nav if any
+                R.id.homeFragment,
+                R.id.search,
+                R.id.favoriteFragment // Add other top-level destinations from your bottom nav if any
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController) // This line will handle most navigation
         navView.setNavigationItemSelectedListener(this) // Set the listener for custom actions
-
-        // The following lines regarding BottomNavigationView have been removed as per your request
-        // to move it to HomeFragment.
-        // val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        // bottomNav.setupWithNavController(navController)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.action_sign_out -> {
-                //TODO
-                // Implement your sign-out logic here
-                // For example, navigate to a LoginFragment or finish the activity
-                finish() //closes the app for now
-                // If you navigate, make sure the drawer closes
-                // drawerLayout.closeDrawer(GravityCompat.START)
+                // Clear SharedPreferences
+                val sharedPreferences: SharedPreferences =
+                    getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("is_logged_in", false)
+                // Add any other auth-related data to clear, e.g.:
+                // editor.remove("user_token")
+                // editor.remove("user_id")
+                editor.apply()
+
+                // Close the activity (and app session)
+                finish()
+
+                // It's good practice to close the drawer if it's open,
+                // though finish() might make this visually brief.
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                }
                 return true
             }
 
@@ -69,7 +80,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 drawerLayout.closeDrawer(GravityCompat.START)
                 return true
             }
-
         }
 
         return false
