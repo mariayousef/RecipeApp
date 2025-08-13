@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -36,22 +37,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
                 R.id.search,
-                R.id.favoriteFragment // Add other top-level destinations from your bottom nav if any
+                R.id.favoriteFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController) // This line will handle most navigation
-        navView.setNavigationItemSelectedListener(this) // Set the listener for custom actions
+        navView.setupWithNavController(navController)
+        navView.setNavigationItemSelectedListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
+
         when (item.itemId) {
             R.id.action_sign_out -> {
                 // Clear SharedPreferences
@@ -61,6 +61,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 editor.putBoolean("is_logged_in", false)
                 editor.apply()
 
+                // Navigate to LoginFragment and clear back stack
+                val navOptions = NavOptions.Builder()
+                    .setPopUpTo(R.id.nav_graph, true) // Pop up to the start of the graph, clearing history
+                    .setLaunchSingleTop(true) // Avoid multiple copies of login screen
+                    .build()
+                navController.navigate(R.id.login_fragment, null, navOptions)
 
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START)
@@ -69,7 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.action_about_creator -> {
-                navController.navigate(R.id.about_fragment) // Ensure 'aboutFragment' is an ID in your nav_graph
+                navController.navigate(R.id.about_fragment)
                 drawerLayout.closeDrawer(GravityCompat.START)
                 return true
             }
