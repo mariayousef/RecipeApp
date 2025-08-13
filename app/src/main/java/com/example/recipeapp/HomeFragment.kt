@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val bottomNavigation = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNavigation = view.findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -84,9 +84,7 @@ class HomeFragment : Fragment() {
                     findNavController().navigate(R.id.favorite, bundle)
                     true
                 }
-                R.id.homeFragment -> {
-                    true
-                }
+                R.id.homeFragment -> true
                 else -> false
             }
         }
