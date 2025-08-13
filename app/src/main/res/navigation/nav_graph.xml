@@ -35,18 +35,32 @@
             android:id="@+id/action_SearchFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
     </fragment>
-    <fragment android:id="@+id/favorite"
-        android:name="com.example.recipeapp.FavoriteFragment"
+
+
+    <fragment
+        android:id="@+id/favorite"
+        android:name="com.example.recipeapp.ui.favorites.FavoriteFragment"
         android:label="favorite"
         tools:layout="@layout/fragment_favorite">
-
+        <action
+            android:id="@+id/action_favorite_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_favorite_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
     </fragment>
 
-    <fragment android:id="@+id/about"
+    <fragment
+        android:id="@+id/about_fragment"
         android:name="com.example.recipeapp.AboutFragment"
         android:label="about"
-        tools:layout="@layout/fragment_about"
-        id="@+id/aboutFragment">
+        tools:layout="@layout/fragment_about">
+        <action
+            android:id="@+id/action_about_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-
 </navigation>

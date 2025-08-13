@@ -11,8 +11,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.recipeapp.ui.favorites.FavoriteViewModel
 
 class RecipeDetailFragment : Fragment() {
 
@@ -39,14 +41,26 @@ class RecipeDetailFragment : Fragment() {
 
         var isFavorite = false
 
+        val viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
+
+        viewModel.checkIfFavorite(meal.idMeal) { isFav ->
+            isFavorite = isFav
+            favoriteIcon.setImageResource(
+                if (isFavorite) R.drawable.ic_favorite_filled else R.drawable.ic_favorite_border
+            )
+        }
+
         favoriteIcon.setOnClickListener {
             isFavorite = !isFavorite
             if (isFavorite) {
+                viewModel.addToFavorites(meal)
                 favoriteIcon.setImageResource(R.drawable.ic_favorite_filled)
             } else {
+                viewModel.removeFromFavorites(meal)
                 favoriteIcon.setImageResource(R.drawable.ic_favorite_border)
             }
         }
+
 
         var isExpanded = false
 

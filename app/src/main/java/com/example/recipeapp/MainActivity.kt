@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_about_creator -> {
                 findNavController(R.id.nav_host_fragment)
-                    .navigate(R.id.aboutFragment)
+                    .navigate(R.id.about_fragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
