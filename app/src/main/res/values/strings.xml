@@ -37,6 +37,7 @@
     <string name="delete">delete</string>
     <string name="favorites">Favorites</string>
     <string name="meal_image">Meal image</string>
-
+    <string name="video_thumbnail">Recipe video thumbnail</string>
+    <string name="play_video">Play recipe video</string>
 
 </resources>
