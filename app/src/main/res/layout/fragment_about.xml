@@ -19,7 +19,7 @@
         android:id="@+id/aboutCreator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Created by: maria youssef, ahmed khaled , abdelmalek mokhtar , alshimaa khaled"
+        android:text="Created by: Maria Youssef, Ahmed Refaat , abdelmalek mokhtar , alshimaa khaled"
         android:textSize="18sp"
         android:layout_marginBottom="8dp" />
 
