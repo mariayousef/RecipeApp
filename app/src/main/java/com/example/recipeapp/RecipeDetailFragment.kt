@@ -15,6 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.recipeapp.ui.favorites.FavoriteViewModel
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class RecipeDetailFragment : Fragment() {
 
@@ -34,13 +37,16 @@ class RecipeDetailFragment : Fragment() {
         val youtubeButton = view.findViewById<Button>(R.id.youtube_button)
         val toggleView = view.findViewById<TextView>(R.id.toggle_description)
         val favoriteIcon = view.findViewById<ImageView>(R.id.favorite_icon)
+        val playButton = view.findViewById<ImageView>(R.id.play_button)
+        val videoThumbnail = view.findViewById<ImageView>(R.id.video_thumbnail)
+        val videoView = view.findViewById<YouTubePlayerView>(R.id.video_view)
 
         Glide.with(requireContext()).load(meal.strMealThumb).into(imageView)
         titleView.text = meal.strMeal
         instructionsView.text = meal.strInstructions ?: "No instructions available"
 
+        // ---- Favorite logic ----
         var isFavorite = false
-
         val viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
 
         viewModel.checkIfFavorite(meal.idMeal) { isFav ->
@@ -61,9 +67,8 @@ class RecipeDetailFragment : Fragment() {
             }
         }
 
-
+        // ---- Show more/less logic ----
         var isExpanded = false
-
         instructionsView.post {
             val layout = instructionsView.layout
             if (layout != null) {
@@ -91,10 +96,34 @@ class RecipeDetailFragment : Fragment() {
             }
         }
 
+        // ---- YouTube Button: open in YouTube app ----
         youtubeButton.setOnClickListener {
-            meal.strYoutube?.let {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+            meal.strYoutube?.let { url ->
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 startActivity(intent)
+            }
+        }
+
+        // ---- Load YouTube Thumbnail ----
+        meal.strYoutube?.let { url ->
+            val videoId = Uri.parse(url).getQueryParameter("v")
+            if (!videoId.isNullOrEmpty()) {
+                Glide.with(requireContext())
+                    .load("https://img.youtube.com/vi/$videoId/0.jpg")
+                    .into(videoThumbnail)
+
+                playButton.setOnClickListener {
+                    videoThumbnail.visibility = View.GONE
+                    playButton.visibility = View.GONE
+                    videoView.visibility = View.VISIBLE
+
+                    lifecycle.addObserver(videoView)
+                    videoView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            youTubePlayer.loadVideo(videoId, 0f)
+                        }
+                    })
+                }
             }
         }
 
